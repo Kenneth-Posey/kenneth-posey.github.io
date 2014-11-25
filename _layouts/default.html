@@ -3,13 +3,15 @@
 
   {% include head.html %}
 
-  <body>
+  <body class="zinnia default exterior-wrapper">
 
     {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
+    <div class="container interior-wrapper">
+      <div id="content">
+        <div id="content-body" class="content-body-class" tabindex="5000" style="height: 869px; overflow: hidden; outline: none;">
+          {{ content }}
+        </div>
       </div>
     </div>
 
