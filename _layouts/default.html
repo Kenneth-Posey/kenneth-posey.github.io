@@ -3,13 +3,13 @@
 
   {% include head.html %}
 
-  <body class="zinnia default exterior-wrapper">
+  <body class="exterior-wrapper">
 
     {% include header.html %}
 
-    <div class="container interior-wrapper">
+    <div class="interior-wrapper">
       <div id="content">
-        <div id="content-body" class="content-body-class" tabindex="5000" style="height: 869px; overflow: hidden; outline: none;">
+        <div id="content-body" class="content-body-class">
           {{ content }}
         </div>
       </div>
@@ -18,6 +18,7 @@
     {% include footer.html %}
     <div class="matrix-font stream-container" id="left-stream"></div>
     <div class="matrix-font stream-container" id="right-stream"></div>
+
     <script type="text/javascript">
 
     var letterChanger = function (state, currentObject) {
@@ -39,7 +40,7 @@
       for (var i = 0; i < listLength; i++) {
         var currentObject = letterList[i];
         var randomId = RandomTextGenerator(6);
-        var randomTime = Math.floor((Math.random() * 2000) + 3000);
+        var randomTime = Math.floor((Math.random() * 2000) + 3000) + i * 1000;
         var currentLetter = currentObject.innerText;
 
         if (!currentObject.id) {
@@ -58,6 +59,7 @@
       setTimeout(textChanger, 5000, state);
     };
     </script>
+
     <script type="text/javascript">
 
     $(document).ready(function () {
@@ -87,7 +89,7 @@
       if (location == '/home/') {
         contentBody.empty();
         contentBody.append(
-          '<div style="margin-top: 200px; font-size:24px; text-align: center; width: 700px; margin-left: 100px;" class="matrix-font">' +
+        '<div style="margin-top: 200px; font-size:24px; text-align: center; width: 700px; margin-left: 100px;" class="matrix-font">' +
           '<span data-original="U" class="under-construction">f</span>' +
           '<span data-original="N" class="under-construction">a</span>' +
           '<span data-original="D" class="under-construction">d</span>' +
@@ -107,21 +109,124 @@
           '<span data-original="O" class="under-construction">r</span>' +
           '<span data-original="N" class="under-construction">s</span>' +
           '</div>'
-        );
+          );
 
-        setTimeout(textChanger, 1000, state);
-      } else {
-        $.get(location)
-        .done(function (data) {
-          $('#content-body').empty();
-          $('#content-header').empty();
-          var responseTitle = $('.entry-title', "<p>" + data + "</p>");
-          var responseBody = $('.entry-body', "<p>" + data + "</p>");
+          setTimeout(textChanger, 1000, state);
+          // This is if you navigate to the site without using the menu
+        } else {
+          $.get(location)
+          .done(function (data) {
+            $('#content-body').empty();
+            $('#content-header').empty();
+            var responseTitle = $('.entry-title', "<p>" + data + "</p>");
+            var responseBody = $('.entry-body', "<p>" + data + "</p>");
 
-          $('#content-body').append(responseBody);
-          $('#content-header').append(responseTitle);
+            $('#content-body').append(responseBody);
+            $('#content-header').append(responseTitle);
 
-          history.pushState({}, '', windowLocation);
+            history.pushState({}, '', windowLocation);
+
+            var scrollSettings = {
+              cursorcolor: '#00ff00',
+              autohidemode: false,
+              cursorborder: '0px',
+              cursorborderradius: '0px'
+            };
+
+            var wrapper = $('#content-body');
+            wrapper.niceScroll(scrollSettings);
+          });
+        }
+
+
+        $('#start-menu-button').bind('click', function () {
+          var startMenu = $('#start-menu-display');
+          if (startMenu.css('display') == 'none') {
+            startMenu.css('display', 'block');
+          } else {
+            hideMenus();
+          }
+
+          //Stops link navigation
+          return false;
+        });
+
+        var hideMenus = function () {
+          var startMenu = $('#start-menu-display');
+          var subMenu = $('.sub-menu-display');
+          startMenu.css('display', 'none');
+          subMenu.css('display', 'none');
+        };
+
+        var windowLocation = '';
+        var showSubMenu = function () {
+          var subMenu = $('.sub-menu-display');
+
+          var subMenuContentHtml = $(subMenu.html);
+
+          var titles = $('.entry-title', subMenuContentHtml);
+
+          subMenu.empty();
+          titles.each(function (i) {
+            //bit of hackage to select the link for easy modification
+            var entry = $('a', '<span>' + this.innerHTML + '</span>');
+            entry.attr('class', 'start-menu-link start-menu-item');
+
+            subMenu.append(entry.wrap('<p>').unwrap());
+            });
+
+            var content = $('#content-body');
+            var entries = $('.start-menu-link', subMenu);
+            entries.each(function () {
+              $(this).bind('click', function () {
+                $('#content-body').empty();
+                $('#content-header').empty();
+                content.append('<span style="margin-top: 100px;" class="matrix-font">LOADING</span>');
+                //content.load(this.href + ' #entry-content-text');
+                windowLocation = this.href;
+                $.get(this.href)
+                .done(function (data) {
+                  $('#content-body').empty();
+                  $('#content-header').empty();
+                  var responseTitle = $('.entry-title', "<p>" + data + "</p>");
+                  var responseBody = $('.entry-body', "<p>" + data + "</p>");
+
+                  $('#content-body').append(responseBody);
+                  $('#content-header').append(responseTitle);
+
+                  history.pushState({}, '', windowLocation);
+
+                  var scrollSettings = {
+                    cursorcolor: '#00ff00',
+                    autohidemode: false,
+                    cursorborder: '0px',
+                    cursorborderradius: '0px'
+                  };
+
+                  var wrapper = $('#content-body');
+                  wrapper.niceScroll(scrollSettings);
+                });
+
+                hideMenus();
+                return false;
+              });
+            });
+          };
+
+          $('.start-menu-link').bind('click', function () {
+
+            var subMenu = $('.sub-menu-display');
+            if (subMenu.css('display') == 'none') {
+              subMenu.css('display', 'block');
+            }
+            subMenu.empty();
+            subMenu.append('Loading...');
+            subMenu.load(this.href + ' #content-loop', showSubMenu);
+
+            //Stops link navigation
+            return false;
+          });
+
 
           var scrollSettings = {
             cursorcolor: '#00ff00',
@@ -132,111 +237,9 @@
 
           var wrapper = $('#content-body');
           wrapper.niceScroll(scrollSettings);
+
         });
-      }
-
-
-      $('#start-menu-button').bind('click', function () {
-        var startMenu = $('#start-menu-display');
-        if (startMenu.css('display') == 'none') {
-          startMenu.css('display', 'block');
-        } else {
-          hideMenus();
-        }
-
-        //Stops link navigation
-        return false;
-      });
-
-      var hideMenus = function () {
-        var startMenu = $('#start-menu-display');
-        var subMenu = $('.sub-menu-display');
-        startMenu.css('display', 'none');
-        subMenu.css('display', 'none');
-      };
-
-      var windowLocation = '';
-      var showSubMenu = function () {
-        var subMenu = $('.sub-menu-display');
-
-        var subMenuContentHtml = $(subMenu.html);
-
-        var titles = $('.entry-title', subMenuContentHtml);
-
-        subMenu.empty();
-        titles.each(function (i) {
-          //bit of hackage to select the link for easy modification
-          var entry = $('a', '<span>' + this.innerHTML + '</span>');
-          entry.attr('class', 'start-menu-link start-menu-item');
-
-          subMenu.append(entry.wrap('<p>').unwrap());
-          });
-
-          var content = $('#content-body');
-          var entries = $('.start-menu-link', subMenu);
-          entries.each(function () {
-            $(this).bind('click', function () {
-              $('#content-body').empty();
-              $('#content-header').empty();
-              content.append('<span style="margin-top: 100px;" class="matrix-font">LOADING</span>');
-              //content.load(this.href + ' #entry-content-text');
-              windowLocation = this.href;
-              $.get(this.href)
-              .done(function (data) {
-                $('#content-body').empty();
-                $('#content-header').empty();
-                var responseTitle = $('.entry-title', "<p>" + data + "</p>");
-                var responseBody = $('.entry-body', "<p>" + data + "</p>");
-
-                $('#content-body').append(responseBody);
-                $('#content-header').append(responseTitle);
-
-                history.pushState({}, '', windowLocation);
-
-                var scrollSettings = {
-                  cursorcolor: '#00ff00',
-                  autohidemode: false,
-                  cursorborder: '0px',
-                  cursorborderradius: '0px'
-                };
-
-                var wrapper = $('#content-body');
-                wrapper.niceScroll(scrollSettings);
-              });
-
-              hideMenus();
-              return false;
-            });
-          });
-        };
-
-        $('.start-menu-link').bind('click', function () {
-
-          var subMenu = $('.sub-menu-display');
-          if (subMenu.css('display') == 'none') {
-            subMenu.css('display', 'block');
-          }
-          subMenu.empty();
-          subMenu.append('Loading...');
-          subMenu.load(this.href + ' #content-loop', showSubMenu);
-
-          //Stops link navigation
-          return false;
-        });
-
-
-        var scrollSettings = {
-          cursorcolor: '#00ff00',
-          autohidemode: false,
-          cursorborder: '0px',
-          cursorborderradius: '0px'
-        };
-
-        var wrapper = $('#content-body');
-        wrapper.niceScroll(scrollSettings);
-
-      });
-    </script>
+      </script>
   </body>
 
 </html>
