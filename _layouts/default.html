@@ -16,7 +16,227 @@
     </div>
 
     {% include footer.html %}
+    <div class="matrix-font stream-container" id="left-stream" style="width: 435px; margin-left: 25px; height: 994px;"></div>
+    <div class="matrix font stream-container" id="right-stream" style="width: 435px; margin-left: 25px; height: 994px;"></div>
+    <script type="text/javascript">
 
+    var letterChanger = function (state, currentObject) {
+      var currentLetter = currentObject.innerText;
+      var originalLetter = currentObject.attributes.getNamedItem("data-original").value;
+
+      if (!state) {
+        var randomLetter = RandomTextGenerator(1);
+        currentObject.innerText = randomLetter;
+      } else {
+        currentObject.innerText = originalLetter;
+      }
+    };
+
+
+    var textChanger = function (state) {
+      var letterList = $('.under-construction');
+      var listLength = letterList.length;
+      for (var i = 0; i < listLength; i++) {
+        var currentObject = letterList[i];
+        var randomId = RandomTextGenerator(6);
+        var randomTime = Math.floor((Math.random() * 2000) + 3000);
+        var currentLetter = currentObject.innerText;
+
+        if (!currentObject.id) {
+          currentObject.id = randomId;
+        }
+
+        setTimeout(letterChanger, randomTime, state, currentObject);
+      }
+
+      if (state) {
+        state = false;
+      } else {
+        state = true;
+      }
+
+      setTimeout(textChanger, 5000, state);
+    };
+    </script>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+      var state = true;
+      var exterior = $(".exterior-wrapper");
+      var interior = $(".interior-wrapper");
+      var leftContainer = $('#left-stream');
+      var rightContainer = $('#right-stream');
+
+      var backgroundSpace = window.innerWidth - leftContainer.width() * 2 - interior.width() - 150;
+      var streamContainerWidth = backgroundSpace / 2;
+
+      var contentBody = $("#content-body");
+      contentBody.css('height', window.innerHeight - 150);
+
+      leftContainer.css("width", streamContainerWidth + "px");
+      rightContainer.css("width", streamContainerWidth + "px");
+
+      leftContainer.css("margin-left", "25px");
+      rightContainer.css("margin-left", (streamContainerWidth + contentBody.width() + 75) + "px");
+
+      InitializeStreams(leftContainer, options);
+      InitializeStreams(rightContainer, options);
+
+      var location = document.location.pathname;
+      if (location == '/home/') {
+        contentBody.empty();
+        contentBody.append(
+          '<div style="margin-top: 200px; font-size:24px; text-align: center; width: 700px; margin-left: 100px;" class="matrix-font">' +
+          '<span data-original="U" class="under-construction">f</span>' +
+          '<span data-original="N" class="under-construction">a</span>' +
+          '<span data-original="D" class="under-construction">d</span>' +
+          '<span data-original="E" class="under-construction">t</span>' +
+          '<span data-original="R" class="under-construction">y</span>' +
+          '<span>&nbsp;</span>' +
+          '<span data-original="C" class="under-construction">e</span>' +
+          '<span data-original="O" class="under-construction">i</span>' +
+          '<span data-original="N" class="under-construction">u</span>' +
+          '<span data-original="S" class="under-construction">o</span>' +
+          '<span data-original="T" class="under-construction">h</span>' +
+          '<span data-original="R" class="under-construction">j</span>' +
+          '<span data-original="U" class="under-construction">n</span>' +
+          '<span data-original="C" class="under-construction">w</span>' +
+          '<span data-original="T" class="under-construction">q</span>' +
+          '<span data-original="I" class="under-construction">p</span>' +
+          '<span data-original="O" class="under-construction">r</span>' +
+          '<span data-original="N" class="under-construction">s</span>' +
+          '</div>'
+        );
+
+        setTimeout(textChanger, 1000, state);
+      } else {
+        $.get(location)
+        .done(function (data) {
+          $('#content-body').empty();
+          $('#content-header').empty();
+          var responseTitle = $('.entry-title', "<p>" + data + "</p>");
+          var responseBody = $('.entry-body', "<p>" + data + "</p>");
+
+          $('#content-body').append(responseBody);
+          $('#content-header').append(responseTitle);
+
+          history.pushState({}, '', windowLocation);
+
+          var scrollSettings = {
+            cursorcolor: '#00ff00',
+            autohidemode: false,
+            cursorborder: '0px',
+            cursorborderradius: '0px'
+          };
+
+          var wrapper = $('#content-body');
+          wrapper.niceScroll(scrollSettings);
+        });
+      }
+
+
+      $('#start-menu-button').bind('click', function () {
+        var startMenu = $('#start-menu-display');
+        if (startMenu.css('display') == 'none') {
+          startMenu.css('display', 'block');
+        } else {
+          hideMenus();
+        }
+
+        //Stops link navigation
+        return false;
+      });
+
+      var hideMenus = function () {
+        var startMenu = $('#start-menu-display');
+        var subMenu = $('.sub-menu-display');
+        startMenu.css('display', 'none');
+        subMenu.css('display', 'none');
+      };
+
+      var windowLocation = '';
+      var showSubMenu = function () {
+        var subMenu = $('.sub-menu-display');
+
+        var subMenuContentHtml = $(subMenu.html);
+
+        var titles = $('.entry-title', subMenuContentHtml);
+
+        subMenu.empty();
+        titles.each(function (i) {
+          //bit of hackage to select the link for easy modification
+          var entry = $('a', '<span>' + this.innerHTML + '</span>');
+          entry.attr('class', 'start-menu-link start-menu-item');
+
+          subMenu.append(entry.wrap('<p>').unwrap());
+          });
+
+          var content = $('#content-body');
+          var entries = $('.start-menu-link', subMenu);
+          entries.each(function () {
+            $(this).bind('click', function () {
+              $('#content-body').empty();
+              $('#content-header').empty();
+              content.append('<span style="margin-top: 100px;" class="matrix-font">LOADING</span>');
+              //content.load(this.href + ' #entry-content-text');
+              windowLocation = this.href;
+              $.get(this.href)
+              .done(function (data) {
+                $('#content-body').empty();
+                $('#content-header').empty();
+                var responseTitle = $('.entry-title', "<p>" + data + "</p>");
+                var responseBody = $('.entry-body', "<p>" + data + "</p>");
+
+                $('#content-body').append(responseBody);
+                $('#content-header').append(responseTitle);
+
+                history.pushState({}, '', windowLocation);
+
+                var scrollSettings = {
+                  cursorcolor: '#00ff00',
+                  autohidemode: false,
+                  cursorborder: '0px',
+                  cursorborderradius: '0px'
+                };
+
+                var wrapper = $('#content-body');
+                wrapper.niceScroll(scrollSettings);
+              });
+
+              hideMenus();
+              return false;
+            });
+          });
+        };
+
+        $('.start-menu-link').bind('click', function () {
+
+          var subMenu = $('.sub-menu-display');
+          if (subMenu.css('display') == 'none') {
+            subMenu.css('display', 'block');
+          }
+          subMenu.empty();
+          subMenu.append('Loading...');
+          subMenu.load(this.href + ' #content-loop', showSubMenu);
+
+          //Stops link navigation
+          return false;
+        });
+
+
+        var scrollSettings = {
+          cursorcolor: '#00ff00',
+          autohidemode: false,
+          cursorborder: '0px',
+          cursorborderradius: '0px'
+        };
+
+        var wrapper = $('#content-body');
+        wrapper.niceScroll(scrollSettings);
+
+      });
+    </script>
   </body>
 
 </html>
