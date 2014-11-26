@@ -29,7 +29,9 @@
           <a name="{{ category | first }}" class="start-menu-link">{{ category | first }}</a>
           {% for posts in category %}
             {% for post in posts %}
-              Post title: {{ post.title }}
+              {% if post.url %}
+                Post title: {{ post.title }} with url {{ post.url }}
+              {% endif %}
             {% endfor %}
           {% endfor %}
         </li>
