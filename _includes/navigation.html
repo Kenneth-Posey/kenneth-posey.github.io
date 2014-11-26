@@ -24,10 +24,17 @@
         <a href="/home/categories/python/" class="start-menu-link" title="Show all entries in Python">Python</a>
       </li>
 
+      {% for category in site.categories %}
+        <li class="start-menu-item">
+          <a name="{{ category | first }}" class="start-menu-link">{{ category | first }}</a>
+          {% for posts in category %}
+            {% for post in posts %}
+              Post title: {{ post.title }}
+            {% endfor %}
+          {% endfor %}
+        </li>
+      {% endfor %}
     </ul>
-
-
-
   </div>
   <div class="sub-menu-display">
 
