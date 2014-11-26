@@ -8,30 +8,17 @@
     <li class="start-menu-item">
       <a href="/" id="home-link">Home</a>
     </li>
-
-
     <ul id="start-menu-list">
-
-      <li class="start-menu-item">
-        <a href="/home/categories/about/" class="start-menu-link" title="Show all entries in About">About</a>
-      </li>
-
-      <li class="start-menu-item">
-        <a href="/home/categories/professional-portfolio/" class="start-menu-link" title="Show all entries in Professional Portfolio">Professional Portfolio</a>
-      </li>
-
-      <li class="start-menu-item">
-        <a href="/home/categories/python/" class="start-menu-link" title="Show all entries in Python">Python</a>
-      </li>
-
       {% for category in site.categories %}
         <li class="start-menu-item">
-          <a name="{{ category | first }}" class="start-menu-link">{{ category | first }}</a>
+          <a href="#" name="{{ category | first }}" class="start-menu-link">{{ category | first }}</a>
           {% for posts in category %}
-            <ul>
+            <ul class="sub-menu">
               {% for post in posts %}
                 {% if post.url %}
-                  <a href="{{ post.url }}" class="start-menu-link start-menu-item">{{ post.title }}</a>
+                  <li>
+                    <a href="{{ post.url }}" class="start-menu-link start-menu-item">{{ post.title }}</a>
+                  </li>
                 {% endif %}
               {% endfor %}
             </ul>
