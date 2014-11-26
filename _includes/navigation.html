@@ -2,8 +2,6 @@
   <div id="start-menu-button" class="start-menu-item">
     <img src="http://i.imgur.com/n9QWkc8.png" alt="Start">
   </div>
-  <div id="start-menu-bar">
-  </div>
   <div id="start-menu-display">
     <li class="start-menu-item">
       <a href="/" id="home-link">Home</a>
@@ -17,7 +15,7 @@
               {% for post in posts %}
                 {% if post.url %}
                   <li>
-                    <a href="{{ post.url }}" class="start-menu-link start-menu-item">{{ post.title }}</a>
+                    <a href="{{ post.url }}" class="start-menu-link start-menu-item">{{ post.title | strip_newlines }}</a>
                   </li>
                 {% endif %}
               {% endfor %}
