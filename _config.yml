@@ -13,4 +13,4 @@ github_username:  kenneth-posey
 markdown: kramdown
 
 # Extras
-highlighting: pygments linenos
+highlighter: pygments linenos
