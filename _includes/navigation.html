@@ -3,25 +3,29 @@
     <img src="http://i.imgur.com/n9QWkc8.png" alt="Start">
   </div>
   <div id="start-menu-display">
-    <li class="start-menu-item">
-      <a href="/" id="home-link">Home</a>
-    </li>
     <ul id="start-menu-list">
+      <li class="start-menu-item">
+        <a href="/" id="home-link">Home</a>
+      </li>
       {% for category in site.categories %}
-        <li class="start-menu-item">
-          <a href="#" name="{{ category | first }}" class="start-menu-link">{{ category | first }}</a>
-          {% for posts in category %}
-            <ul class="sub-menu">
-              {% for post in posts %}
-                {% if post.url %}
-                  <li>
-                    <a href="{{ post.url }}" class="start-menu-link start-menu-item">{{ post.title | strip_newlines }}</a>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
+      <li class="start-menu-item">
+        <a href="#" name="{{ category | first }}" class="start-menu-link">
+          {{ category | first }}
+        </a>
+        {% for posts in category %}
+        <ul class="sub-menu">
+          {% for post in posts %}
+            {% if post.url %}
+              <li>
+                <a href="{{ post.url }}" class="start-menu-link start-menu-item">
+                  {{ post.title | strip_newlines }}
+                </a>
+              </li>
+            {% endif %}
           {% endfor %}
-        </li>
+        </ul>
+        {% endfor %}
+      </li>
       {% endfor %}
     </ul>
   </div>

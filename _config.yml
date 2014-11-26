@@ -1,9 +1,8 @@
 # Site settings
-title: Ken-The-Programmer.com ~ Home Site for Kenneth Posey
+title: Kenneth Posey's Home Site
 email: kenneth.posey@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This site is hosted on github pages and built with atom.io text editor.
-
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://ken-the-programmer.com" # the base hostname & protocol for your site
 twitter_username: mr_pleco
