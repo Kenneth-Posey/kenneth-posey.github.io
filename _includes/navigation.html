@@ -28,11 +28,13 @@
         <li class="start-menu-item">
           <a name="{{ category | first }}" class="start-menu-link">{{ category | first }}</a>
           {% for posts in category %}
-            {% for post in posts %}
-              {% if post.url %}
-                Post title: {{ post.title }} with url {{ post.url }}
-              {% endif %}
-            {% endfor %}
+            <ul>
+              {% for post in posts %}
+                {% if post.url %}
+                  <a href="{{ post.url }}" class="start-menu-link start-menu-item">{{ post.title }}</a>
+                {% endif %}
+              {% endfor %}
+            </ul>
           {% endfor %}
         </li>
       {% endfor %}

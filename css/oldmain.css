@@ -34,7 +34,7 @@
         font-size: 24px;
         text-align: center;
         display: block;
-        font-family: 'matrix_code_nfiregular'; 
+        font-family: 'matrix_code_nfiregular';
         text-transform: uppercase;
     }
 
@@ -54,7 +54,7 @@
         margin-left: -50%;
         margin-top: 5px;
     }
-    
+
     .interior-wrapper {
         height: 98%;
         width: 900px;
@@ -64,14 +64,13 @@
     #start-menu-container {
         background-color: yellow;
     }
-    
+
     #start-menu {
         background-color: black;
         width: 900px;
     }
 
     #start-menu-button {
-        background-color: lime;
         width: 150px;
         cursor: pointer;
     }
@@ -91,7 +90,7 @@
         text-decoration: none;
         color: lime;
     }
-	
+
 	#home-link {
         text-decoration: none;
         color: lime;
@@ -177,127 +176,127 @@
         background-color: black;
         height: 10px;
     }
-    
+
     #sidebar {
         width: 650px;
     }
 
-    .stream-container { 
+    .stream-container {
         height: 100%;
         top: 0px;
         position: absolute;
         overflow: hidden;
     }
-    
-    #left-stream { 
+
+    #left-stream {
         left: 0px;
     }
-    
-    #right-stream { 
+
+    #right-stream {
     }
-    
-    .matrix-font {    
-        font-family: 'matrix_code_nfiregular';            
+
+    .matrix-font {
+        font-family: 'matrix_code_nfiregular';
     }
-    
+
     .sprite {
         color: #0f0;
     }
-    
+
     .block {
         position: absolute;
         left: auto;
         right: auto;
-    }          
-    
+    }
+
     .slider {
         position: absolute;
         float: left;
         top: 5px;
         left: 0px;
     }
-	
-	.website-thumbnail { 
-		border: 2px solid black; 
-		display:inherit; 
-	} 
-	
-	.thumbnail-wrapper { 
+
+	.website-thumbnail {
+		border: 2px solid black;
+		display:inherit;
+	}
+
+	.thumbnail-wrapper {
 		border: 2px solid lime;
-		width: 404px; 
-		height: 304px; 
-		float: left; 
-		margin-left: 15px; 
-		margin-right: 15px; 
-		margin-bottom: 30px; 
-	} 
-	
-	.thumbnail-wrapper a:hover {	
+		width: 404px;
+		height: 304px;
+		float: left;
+		margin-left: 15px;
+		margin-right: 15px;
+		margin-bottom: 30px;
+	}
+
+	.thumbnail-wrapper a:hover {
 		background: url('/static/images/originals/overlay.png');
 	}
-	
-	.thumbnail-info { 
-		display:none; 
+
+	.thumbnail-info {
+		display:none;
 		width: 400px;
 		height: 300px;
 		float: left;
-		
-	} 
-	
-	.thumbnail-image a { 
-		text-decoration:none; 
-	} 
-	
+
+	}
+
+	.thumbnail-image a {
+		text-decoration:none;
+	}
+
 	h1 {
 		border-top-width: 1px;
 		border-top-color: lime;
 		border-top-style: solid;
 		padding-top: 3px;
-		
+
 		border-bottom-width: 1px;
 		border-bottom-color: lime;
 		border-bottom-style: solid;
 		padding-bottom: 3px;
-		
+
 		text-align: center;
 		text-transform: uppercase;
-		
+
 		margin-bottom: 10px;
 		clear:both;
 	}
-	
+
 	h2 {
-		margin-bottom: 10px;	
+		margin-bottom: 10px;
 	}
-	
+
 	.left-h2 {
 		width: 70%;
 		margin: 0 auto;
 		float: left;
 		font-weight: bold;
 	}
-	
+
 	.right-h2 {
 		width: 30%;
 		margin: 0 auto;
 		float: right;
 	}
-	
+
 	ul.content-text {
 		font-size: 95%;
 		margin-left: 10px;
 		line-height: 120%;
 		width: 85%;
 	}
-	
+
 	ul.content-text li {
 		list-style-type: square;
 	}
-	
+
 	ul.two-column-list {
 		height: 100px;
 	}
-	
+
 	ul.two-column-list li {
 		list-style-type: square;
 		width: 50%;
