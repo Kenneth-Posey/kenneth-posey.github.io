@@ -2,4 +2,9 @@
 .sub-menu
 {
   display: none;
+  position: absolute;
+  margin-left: 265px;
+  width: 200px;
+  height: 200px;
+  margin-top: 0px;
 }
