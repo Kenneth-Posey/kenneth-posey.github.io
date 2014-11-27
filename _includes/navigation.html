@@ -4,7 +4,7 @@
   </div>
   <div id="start-menu-display">
     {% for category in site.categories %}
-    <div class="sub-menu" id="#{{ category | first }}">
+    <div class="sub-menu {{ category | first }}">
       {% for posts in category %}
       <ul>
         {% for post in posts %}

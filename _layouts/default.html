@@ -215,7 +215,7 @@
           };
 
           $('.start-menu-link').bind('click', function () {
-            var subMenuName = '#' + this.name;
+            var subMenuName = '.sub-menu.' + this.name;
             var subMenu = $(subMenuName);
             if (subMenu.css('display') == 'none') {
               subMenu.css('display', 'block');
