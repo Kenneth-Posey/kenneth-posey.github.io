@@ -4,7 +4,7 @@
   {% include head.html %}
 
   <body class="exterior-wrapper">
-    
+
       {% include header.html %}
 
     <div class="interior-wrapper">
@@ -160,8 +160,9 @@
         };
 
         var windowLocation = '';
-        var showSubMenu = function () {
-          var subMenu = $('.sub-menu-display');
+        var showSubMenu = function (submenuName) {
+          var selector = '#' + submenuName;
+          var subMenu = $(selector);
 
           var subMenuContentHtml = $(subMenu.html);
 
@@ -182,8 +183,7 @@
               $(this).bind('click', function () {
                 $('#content-body').empty();
                 $('#content-header').empty();
-                content.append('<span style="margin-top: 100px;" class="matrix-font">LOADING</span>');
-                //content.load(this.href + ' #entry-content-text');
+
                 windowLocation = this.href;
                 $.get(this.href)
                 .done(function (data) {
@@ -215,8 +215,8 @@
           };
 
           $('.start-menu-link').bind('click', function () {
-
-            var subMenu = $('.sub-menu-display');
+            var subMenuName = '#' + this.name;
+            var subMenu = $(subMenuName);
             if (subMenu.css('display') == 'none') {
               subMenu.css('display', 'block');
             }
