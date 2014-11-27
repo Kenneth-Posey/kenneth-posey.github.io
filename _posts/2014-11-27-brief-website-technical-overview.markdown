@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Brief Website Technical Overview
 categories:
 - about

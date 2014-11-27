@@ -1,4 +1,5 @@
 ---
+layout: post
 title: contact
 categories:
 - about
