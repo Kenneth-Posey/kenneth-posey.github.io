@@ -219,11 +219,9 @@
             var subMenu = $(subMenuName);
             if (subMenu.css('display') == 'none') {
               subMenu.css('display', 'block');
+            } else {
+              subMenu.css('display', 'none');
             }
-            subMenu.empty();
-            subMenu.append('Loading...');
-            subMenu.load(this.href + ' #content-loop', showSubMenu);
-
             //Stops link navigation
             return false;
           });
