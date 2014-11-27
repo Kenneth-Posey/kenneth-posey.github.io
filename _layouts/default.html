@@ -219,7 +219,7 @@
             var linkName = this.name;
 
             $('.sub-menu').each(function() {
-              if (this.name != linkName) {
+              if (this.classList.contains(linkName) == false) {
                 $(this).css('display', 'none');
               }
             });
