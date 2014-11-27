@@ -215,8 +215,14 @@
           };
 
           $('.start-menu-link').bind('click', function () {
+            // We need to save the link name so it's skipped
+            var linkName = this.name;
+
             $('.sub-menu').each(function() {
-              $(this).css('display', 'none');
+              var currentLink = $(this);
+              if (currentLink.name != linkName) {
+                currentLink.css('display', 'none');
+              }
             });
 
             var subMenuName = '.sub-menu.' + this.name;
