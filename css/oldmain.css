@@ -102,7 +102,6 @@
         margin-left: 15px;
         margin-top: 15px;
         position: absolute;
-        padding: 15px;
         border-color: #0f0;
         border-width: 2px;
         border-style: solid;
@@ -112,19 +111,7 @@
 
     #start-menu-list {
         list-style-type: none;
-    }
-
-    .sub-menu-display {
-        display: none;
-        background-color: black;
-        margin-left: 265px;
-        margin-top: 15px;
-        position: absolute;
-        padding: 15px;
-        border-color: #0f0;
-        border-width: 2px;
-        border-style: solid;
-        z-index: 5;
+        margin-left: -15px;
     }
 
     #start-menu-scrollbar {
