@@ -5,4 +5,11 @@
   position: absolute;
   margin-left: 250px;
   width: 200px;
+  margin-top: -2px;
+}
+
+.sub-menu ul
+{
+  list-style: none;
+  margin-left: -15px;
 }
