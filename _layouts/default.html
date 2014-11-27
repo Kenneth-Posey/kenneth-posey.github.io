@@ -216,12 +216,12 @@
 
           $('.start-menu-link').bind('click', function () {
             $('.sub-menu').each(function() {
-              this.css('display', 'none');
+              $(this).css('display', 'none');
             });
 
             var subMenuName = '.sub-menu.' + this.name;
             var subMenu = $(subMenuName);
-            
+
             if (subMenu.css('display') == 'none') {
               subMenu.css('display', 'block');
             } else {
