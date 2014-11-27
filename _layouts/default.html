@@ -219,9 +219,8 @@
             var linkName = this.name;
 
             $('.sub-menu').each(function() {
-              var currentLink = $(this);
-              if (currentLink.name != linkName) {
-                currentLink.css('display', 'none');
+              if (this.name != linkName) {
+                $(this).css('display', 'none');
               }
             });
 
