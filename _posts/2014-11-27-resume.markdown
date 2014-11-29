@@ -6,7 +6,6 @@ categories:
 - about
 ---
 
-<div class="entry-content" id="entry-content-text">
 <h1>OVERVIEW</h1>
 <p>A creative and motivated, yet practical and analytical, software developer with a dedication to finding holistic, scalable and long term solutions within business requirements. Enthusiastically learns new skills, programming languages and technology as required to engineer a stable and well-polished product. Specific skills include:</p>
 
@@ -48,4 +47,3 @@ categories:
 <h2><div class="left-h2">Bachelors of the Arts - Foreign Language and Culture*</div><div class="right-h2">2004 - 2009</div>
 <div class="left-h2">Kennesaw State University</div><div class="right-h2">Kennesaw, GA</div></h2>
 *Focus on French and German
-</div>

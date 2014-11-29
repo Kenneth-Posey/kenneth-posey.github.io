@@ -4,8 +4,9 @@
   display: none;
   position: absolute;
   margin-left: 250px;
-  width: 200px;
   margin-top: -2px;
+  padding-bottom: 15px;
+  padding-right: 10px;
 }
 
 .sub-menu ul

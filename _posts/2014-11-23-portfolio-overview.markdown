@@ -6,7 +6,6 @@ categories:
 - about
 ---
 
-<div class="entry-content" id="entry-content-text">
   <p></p>
   <h1>Under Construction</h1>
   <br>
@@ -19,7 +18,7 @@ categories:
       width: 404px;
       height: 304px;
       float: left;
-      margin-left: 15px; 
+      margin-left: 15px;
       margin-right: 15px;
       margin-bottom: 30px;
     }
@@ -36,5 +35,4 @@ categories:
   </a>
   </div>
   <div class="thumbnail-wrapper"><a href="http://www.ken-the-programmer.com/">
-  <img title="My Personal Website" src="/static/images/originals/homepage-thumb.png" class="website-thumbnail"></a></div> <div class="thumbnail-wrapper"><a href="https://smokin-goldshop.appspot.com"><img title="eMeMO Goldshop Admin Site" src="/static/images/originals/smokin-portal-thumb.png" class="website-thumbnail"></a></div> <div class="thumbnail-wrapper"><a href="http://www.accessiblevanss.com/"><img title="AccessibleVanss Main Site" src="/static/images/originals/accessiblevanss-thumb.png" class="website-thumbnail"></a></div> <div class="thumbnail-wrapper"><a href="http://www.wheelchair-accessible-vans.com/"><img title="Wheelchair-Accessible-Vans.com" src="/static/images/originals/wavans-thumb.png" class="website-thumbnail"></a></div><p></p>
-</div>
+  <img title="My Personal Website" src="/static/images/originals/homepage-thumb.png" class="website-thumbnail"></a></div> <div class="thumbnail-wrapper"><a href="https://smokin-goldshop.appspot.com"><img title="eMeMO Goldshop Admin Site" src="/static/images/originals/smokin-portal-thumb.png" class="website-thumbnail"></a></div> <div class="thumbnail-wrapper"><a href="http://www.accessiblevanss.com/"><img title="AccessibleVanss Main Site" src="/static/images/originals/accessiblevanss-thumb.png" class="website-thumbnail"></a></div> <div class="thumbnail-wrapper"><a href="http://www.wheelchair-accessible-vans.com/"><img title="Wheelchair-Accessible-Vans.com" src="/static/images/originals/wavans-thumb.png" class="website-thumbnail"></a></div>

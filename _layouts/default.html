@@ -120,7 +120,7 @@
             $('#content-body').empty();
             $('#content-header').empty();
             var responseTitle = $('.entry-title', "<p>" + data + "</p>");
-            var responseBody = $('.entry-body', "<p>" + data + "</p>");
+            var responseBody = $('.entry-content', "<p>" + data + "</p>");
 
             $('#content-body').append(responseBody);
             $('#content-header').append(responseTitle);
