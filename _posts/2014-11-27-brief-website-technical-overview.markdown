@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Brief Website Technical Overview
+title: "Brief Website Technical Overview"
 categories:
 - about
 ---

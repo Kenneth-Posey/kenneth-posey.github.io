@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Main Page"
+title:  "Welcome to Jekyll"
 date:   2014-11-23 23:12:57
 categories:
 - programming
