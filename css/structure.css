@@ -13,3 +13,12 @@
   list-style: none;
   margin-left: -15px;
 }
+
+.sub-menu ul li
+{
+  display: inline-block;
+  float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-right: 15px;
+}
