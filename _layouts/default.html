@@ -91,24 +91,24 @@
         contentBody.empty();
         contentBody.append(
         '<div style="margin-top: 200px; font-size:24px; text-align: center; width: 700px; margin-left: 100px;" class="matrix-font">' +
-          '<span data-original="U" class="under-construction">.</span>' +
-          '<span data-original="N" class="under-construction">.</span>' +
-          '<span data-original="D" class="under-construction">.</span>' +
-          '<span data-original="E" class="under-construction">.</span>' +
-          '<span data-original="R" class="under-construction">.</span>' +
+          '<span data-original="U" class="under-construction"></span>' +
+          '<span data-original="N" class="under-construction"></span>' +
+          '<span data-original="D" class="under-construction"></span>' +
+          '<span data-original="E" class="under-construction"></span>' +
+          '<span data-original="R" class="under-construction"></span>' +
           '<span>&nbsp;</span>' +
-          '<span data-original="C" class="under-construction">.</span>' +
-          '<span data-original="O" class="under-construction">.</span>' +
-          '<span data-original="N" class="under-construction">.</span>' +
-          '<span data-original="S" class="under-construction">.</span>' +
-          '<span data-original="T" class="under-construction">.</span>' +
-          '<span data-original="R" class="under-construction">.</span>' +
-          '<span data-original="U" class="under-construction">.</span>' +
-          '<span data-original="C" class="under-construction">.</span>' +
-          '<span data-original="T" class="under-construction">.</span>' +
-          '<span data-original="I" class="under-construction">.</span>' +
-          '<span data-original="O" class="under-construction">.</span>' +
-          '<span data-original="N" class="under-construction">.</span>' +
+          '<span data-original="C" class="under-construction"></span>' +
+          '<span data-original="O" class="under-construction"></span>' +
+          '<span data-original="N" class="under-construction"></span>' +
+          '<span data-original="S" class="under-construction"></span>' +
+          '<span data-original="T" class="under-construction"></span>' +
+          '<span data-original="R" class="under-construction"></span>' +
+          '<span data-original="U" class="under-construction"></span>' +
+          '<span data-original="C" class="under-construction"></span>' +
+          '<span data-original="T" class="under-construction"></span>' +
+          '<span data-original="I" class="under-construction"></span>' +
+          '<span data-original="O" class="under-construction"></span>' +
+          '<span data-original="N" class="under-construction"></span>' +
           '</div>'
           );
 
@@ -119,8 +119,9 @@
           .done(function (data) {
             $('#content-body').empty();
             $('#content-header').empty();
-            var responseTitle = $('.entry-title', "<p>" + data + "</p>");
-            var responseBody = $('.entry-content', "<p>" + data + "</p>");
+
+            var responseTitle = $($(data)[1]).html();
+            var responseBody = $($(data)[3]).html();
 
             $('#content-body').append(responseBody);
             $('#content-header').append(responseTitle);
@@ -135,7 +136,7 @@
             };
 
             var wrapper = $('#content-body');
-            wrapper.niceScroll(scrollSettings);
+            wrapper.niceScroll(scrollSettings);            
           });
         }
 
