@@ -121,7 +121,7 @@
             $('#content-header').empty();
 
             var responseTitle = $($(data)[1]).html();
-            var responseBody = $($(data)[3]).html();
+            var responseBody = $('#content-body #content', data).html();
 
             $('#content-body').append(responseBody);
             $('#content-header').append(responseTitle);
@@ -136,7 +136,7 @@
             };
 
             var wrapper = $('#content-body');
-            wrapper.niceScroll(scrollSettings);            
+            wrapper.niceScroll(scrollSettings);
           });
         }
 
