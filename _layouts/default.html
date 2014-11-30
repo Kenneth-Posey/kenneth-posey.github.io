@@ -160,7 +160,7 @@
         };
 
         var windowLocation = '';
-          var entries = $('.start-menu-link');
+          var entries = $('.navigation-link');
           entries.each(function () {
             $(this).bind('click', function () {
               windowLocation = this.href;
@@ -168,8 +168,9 @@
               .done(function (data) {
                 $('#content-body').empty();
                 $('#content-header').empty();
-                var responseTitle = $('.entry-title', "<p>" + data + "</p>");
-                var responseBody = $('.entry-body', "<p>" + data + "</p>");
+
+                var responseTitle = $('.entry-title', data);
+                var responseBody = $('.entry-content', data);
 
                 $('#content-body').append(responseBody);
                 $('#content-header').append(responseTitle);
