@@ -169,8 +169,8 @@
                 $('#content-body').empty();
                 $('#content-header').empty();
 
-                var responseTitle = $('#title', $(data));
-                var responseBody = $('#content',$(data));
+                var responseTitle = $($(data)[1]).html();
+                var responseBody = $($(data)[3]).html();
 
                 $('#content-body').append(responseBody);
                 $('#content-header').append(responseTitle);
