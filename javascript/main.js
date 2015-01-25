@@ -81,17 +81,10 @@ var loadPage = function (data) {
   wrapper.niceScroll(scrollSettings);
 };
 
-<<<<<<< HEAD
 var changeWindow = function (self) {
   $(self).bind('click', function () {
     windowLocation = self.href;
     $.get(self.href)
-=======
-var changeWindow = function (this) {
-  $(this).bind('click', function () {
-    windowLocation = this.href;
-    $.get(this.href)
->>>>>>> origin/master
     .done(function (data) {
       $('#content-body').empty();
       $('#content-header').empty();
@@ -119,9 +112,5 @@ var changeWindow = function (this) {
 
     // hideMenus();
     return false;
-<<<<<<< HEAD
   });
 };
-=======
-  };
->>>>>>> origin/master
