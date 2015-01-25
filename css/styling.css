@@ -5,3 +5,21 @@
   background: black;
   border: lime 2px solid;
 }
+
+.social-media-style a
+{
+  color: lime;
+  font-size: 25px;
+}
+
+.social-media-style a:visited,
+.social-media-style a:link,
+.social-media-style a:active
+{
+  text-decoration: none;
+}
+
+.social-media-style a:hover
+{
+  color: white !important;
+}

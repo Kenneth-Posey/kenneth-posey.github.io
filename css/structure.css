@@ -23,3 +23,12 @@
   overflow: hidden;
   margin-right: 15px;
 }
+
+.social-media-structure
+{
+  float: right;
+  margin-top: -30px;
+  text-decoration: none;
+  color: lime;
+  font-size: 25px;
+}

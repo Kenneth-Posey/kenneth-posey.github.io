@@ -19,48 +19,6 @@
     {% include footer.html %}
     <div class="matrix-font stream-container" id="left-stream"></div>
     <div class="matrix-font stream-container" id="right-stream"></div>
-
-    <script type="text/javascript">
-
-    var letterChanger = function (state, currentObject) {
-      var currentLetter = currentObject.innerText;
-      var originalLetter = currentObject.attributes.getNamedItem("data-original").value;
-
-      if (!state) {
-        var randomLetter = RandomTextGenerator(1);
-        currentObject.innerText = randomLetter;
-      } else {
-        currentObject.innerText = originalLetter;
-      }
-    };
-
-
-    var textChanger = function (state) {
-      var letterList = $('.under-construction');
-      var listLength = letterList.length;
-      for (var i = 0; i < listLength; i++) {
-        var currentObject = letterList[i];
-        var randomId = RandomTextGenerator(6);
-        var randomTime = Math.floor((Math.random() * 2000) + 3000);
-        var currentLetter = currentObject.innerText;
-
-        if (!currentObject.id) {
-          currentObject.id = randomId;
-        }
-
-        setTimeout(letterChanger, randomTime, state, currentObject);
-      }
-
-      if (state) {
-        state = false;
-      } else {
-        state = true;
-      }
-
-      setTimeout(textChanger, 5000, state);
-    };
-    </script>
-
     <script type="text/javascript">
 
     $(document).ready(function () {
@@ -89,148 +47,74 @@
       var location = document.location.pathname;
       if (location == '/') {
         contentBody.empty();
-        contentBody.append(
-        '<div style="margin-top: 200px; font-size:24px; text-align: center; width: 700px; margin-left: 100px;" class="matrix-font">' +
-          '<span data-original="U" class="under-construction"></span>' +
-          '<span data-original="N" class="under-construction"></span>' +
-          '<span data-original="D" class="under-construction"></span>' +
-          '<span data-original="E" class="under-construction"></span>' +
-          '<span data-original="R" class="under-construction"></span>' +
-          '<span>&nbsp;</span>' +
-          '<span data-original="C" class="under-construction"></span>' +
-          '<span data-original="O" class="under-construction"></span>' +
-          '<span data-original="N" class="under-construction"></span>' +
-          '<span data-original="S" class="under-construction"></span>' +
-          '<span data-original="T" class="under-construction"></span>' +
-          '<span data-original="R" class="under-construction"></span>' +
-          '<span data-original="U" class="under-construction"></span>' +
-          '<span data-original="C" class="under-construction"></span>' +
-          '<span data-original="T" class="under-construction"></span>' +
-          '<span data-original="I" class="under-construction"></span>' +
-          '<span data-original="O" class="under-construction"></span>' +
-          '<span data-original="N" class="under-construction"></span>' +
-          '</div>'
-          );
+        contentBody.append(underConstruction);
 
           setTimeout(textChanger, 1000, state);
           // This is if you navigate to the site without using the menu
-        } else {
+      } else {
           $.get(location)
-          .done(function (data) {
-            $('#content-body').empty();
-            $('#content-header').empty();
+          .done(loadPage(data));
+      }
 
-            var responseTitle = $($(data)[1]).html();
-            var responseBody = $('#content-body #content', data).html();
 
-            $('#content-body').append(responseBody);
-            $('#content-header').append(responseTitle);
-
-            history.pushState({}, '', windowLocation);
-
-            var scrollSettings = {
-              cursorcolor: '#00ff00',
-              autohidemode: false,
-              cursorborder: '0px',
-              cursorborderradius: '0px'
-            };
-
-            var wrapper = $('#content-body');
-            wrapper.niceScroll(scrollSettings);
-          });
+      $('#start-menu-button').bind('click', function () {
+        var startMenu = $('#start-menu-display');
+        if (startMenu.css('display') == 'none') {
+          startMenu.css('display', 'block');
+        } else {
+          hideMenus();
         }
 
+        //Stops link navigation
+        return false;
+      });
 
-        $('#start-menu-button').bind('click', function () {
-          var startMenu = $('#start-menu-display');
-          if (startMenu.css('display') == 'none') {
-            startMenu.css('display', 'block');
-          } else {
-            hideMenus();
+      var hideMenus = function () {
+        var startMenu = $('#start-menu-display');
+        var subMenu = $('.sub-menu-display');
+        startMenu.css('display', 'none');
+        subMenu.css('display', 'none');
+      };
+
+      var windowLocation = '';
+      var entries = $('.navigation-link');
+      entries.each(changeWindow(this));
+
+      $('.start-menu-link').bind('click', function () {
+        // We need to save the link name so it's skipped
+        var linkName = this.name;
+
+        $('.sub-menu').each(function() {
+          if (this.classList.contains(linkName) == false) {
+            $(this).css('display', 'none');
           }
-
-          //Stops link navigation
-          return false;
         });
 
-        var hideMenus = function () {
-          var startMenu = $('#start-menu-display');
-          var subMenu = $('.sub-menu-display');
-          startMenu.css('display', 'none');
+        var subMenuName = '.sub-menu.' + this.name;
+        var subMenu = $(subMenuName);
+
+        if (subMenu.css('display') == 'none') {
+          subMenu.css('display', 'block');
+        } else {
           subMenu.css('display', 'none');
-        };
-
-        var windowLocation = '';
-          var entries = $('.navigation-link');
-          entries.each(function () {
-            $(this).bind('click', function () {
-              windowLocation = this.href;
-              $.get(this.href)
-              .done(function (data) {
-                $('#content-body').empty();
-                $('#content-header').empty();
-
-                var responseTitle = $($(data)[1]).html();
-                var responseBody = $('#content-body #content', data).html();
-
-                $('#content-body').append(responseBody);
-                $('#content-header').append(responseTitle);
-
-                history.pushState({}, '', windowLocation);
-
-                var scrollSettings = {
-                  cursorcolor: '#00ff00',
-                  autohidemode: false,
-                  cursorborder: '0px',
-                  cursorborderradius: '0px'
-                };
-
-                var wrapper = $('#content-body');
-                wrapper.niceScroll(scrollSettings);
-
-                $('#start-menu-display').css('display', 'none');
-              });
-
-              // hideMenus();
-              return false;
-            });
-          });
-
-          $('.start-menu-link').bind('click', function () {
-            // We need to save the link name so it's skipped
-            var linkName = this.name;
-
-            $('.sub-menu').each(function() {
-              if (this.classList.contains(linkName) == false) {
-                $(this).css('display', 'none');
-              }
-            });
-
-            var subMenuName = '.sub-menu.' + this.name;
-            var subMenu = $(subMenuName);
-
-            if (subMenu.css('display') == 'none') {
-              subMenu.css('display', 'block');
-            } else {
-              subMenu.css('display', 'none');
-            }
-            //Stops link navigation
-            return false;
-          });
+        }
+        //Stops link navigation
+        return false;
+      });
 
 
-          var scrollSettings = {
-            cursorcolor: '#00ff00',
-            autohidemode: false,
-            cursorborder: '0px',
-            cursorborderradius: '0px'
-          };
+      var scrollSettings = {
+        cursorcolor: '#00ff00',
+        autohidemode: false,
+        cursorborder: '0px',
+        cursorborderradius: '0px'
+      };
 
-          var wrapper = $('#content-body');
-          wrapper.niceScroll(scrollSettings);
+      var wrapper = $('#content-body');
+      wrapper.niceScroll(scrollSettings);
 
-        });
-      </script>
+      });
+    </script>
   </body>
 
 </html>
