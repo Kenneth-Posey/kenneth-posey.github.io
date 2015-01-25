@@ -31,4 +31,8 @@
   text-decoration: none;
   color: lime;
   font-size: 25px;
+  display: block;
+  clear: right;
+  width: 200px;
+  text-align: right;
 }
