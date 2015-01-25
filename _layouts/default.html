@@ -54,6 +54,7 @@
       } else {
           $.get(location)
           .done(loadPage(data));
+<<<<<<< HEAD
       }
 
 
@@ -79,6 +80,9 @@
       var windowLocation = '';
       var entries = $('.navigation-link');
       entries.each(changeWindow(this));
+=======
+        }
+>>>>>>> origin/master
 
       $('.start-menu-link').bind('click', function () {
         // We need to save the link name so it's skipped
@@ -97,6 +101,7 @@
           subMenu.css('display', 'block');
         } else {
           subMenu.css('display', 'none');
+<<<<<<< HEAD
         }
         //Stops link navigation
         return false;
@@ -113,6 +118,48 @@
       var wrapper = $('#content-body');
       wrapper.niceScroll(scrollSettings);
 
+=======
+        };
+
+        var windowLocation = '';
+        var entries = $('.navigation-link');
+        entries.each(changeWindow(this));
+        });
+
+        $('.start-menu-link').bind('click', function () {
+          // We need to save the link name so it's skipped
+          var linkName = this.name;
+
+          $('.sub-menu').each(function() {
+            if (this.classList.contains(linkName) == false) {
+              $(this).css('display', 'none');
+            }
+          });
+
+          var subMenuName = '.sub-menu.' + this.name;
+          var subMenu = $(subMenuName);
+
+          if (subMenu.css('display') == 'none') {
+            subMenu.css('display', 'block');
+          } else {
+            subMenu.css('display', 'none');
+          }
+          //Stops link navigation
+          return false;
+        });
+
+
+        var scrollSettings = {
+          cursorcolor: '#00ff00',
+          autohidemode: false,
+          cursorborder: '0px',
+          cursorborderradius: '0px'
+        };
+
+        var wrapper = $('#content-body');
+        wrapper.niceScroll(scrollSettings);
+
+>>>>>>> origin/master
       });
     </script>
   </body>
