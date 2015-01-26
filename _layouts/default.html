@@ -138,7 +138,7 @@
           return false;
         });
       };
-      
+
       var state = true;
       var exterior = $(".exterior-wrapper");
       var interior = $(".interior-wrapper");
@@ -157,7 +157,7 @@
       rightContainer.css("width", streamContainerWidth + "px");
 
       leftContainer.css("margin-left", "25px");
-      rightContainer.css("margin-left", (streamContainerWidth + contentBody.width() + 75) + "px");
+      rightContainer.css("margin-left", (window.innerWidth- 360 - 75) + "px");
 
       InitializeStreams(leftContainer, options);
       InitializeStreams(rightContainer, options);
