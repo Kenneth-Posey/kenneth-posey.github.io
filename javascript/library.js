@@ -7,8 +7,8 @@ var RandomIdGenerator = function(length)
 var RandomTextGenerator = function(length) {
     var text = "";
     var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                     + "abcdefghijklmnopqrstuvwxyz"
-                     + "0123456789";
+                   + "abcdefghijklmnopqrstuvwxyz"
+                   + "0123456789";
 
     for ( var i=0; i < length; i++ ) {
         text += characters.charAt(
