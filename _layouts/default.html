@@ -188,6 +188,9 @@
             wrapper.niceScroll(scrollSettings);
 
             $('#start-menu-display').css('display', 'none');
+            $('.sub-menu').each(function( index, value ){
+              $(value).css('display', 'none');
+            });
           });
 
           // hideMenus();
