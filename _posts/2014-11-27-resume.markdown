@@ -10,13 +10,13 @@ categories:
 <p>A creative and motivated, yet practical and analytical, software developer with a dedication to finding holistic, scalable and long term solutions within business requirements. Enthusiastically learns new skills, programming languages and technology as required to engineer a stable and well-polished product. Specific skills include:</p>
 
 <ul class="two-column-list">
-  <li>4+ years of experience with C#</li>
+  <li>5 years of experience with C#</li>
   <li>Preference for functional programming work</li>
-  <li>4+ years of experience with Javascript</li>
+  <li>4 years of experience with Javascript</li>
   <li>Comfortable with group or solo projects</li>
   <li>3 years of experience with Python</li>
   <li>Defines tasks cleanly with clear priorities</li>
-  <li>&lt;1 year of experience with F#</li>
+  <li>1 year of experience with F#</li>
   <li>Emphasizes clear verbal and written communication</li>
 </ul>
 
@@ -35,7 +35,7 @@ categories:
 
 <h2>
   <div class="left-h2">Full Stack .NET Developer</div>
-  <div class="right-h2">June 2014-Present</div>
+  <div class="right-h2">June 2014-May 2015</div>
   <div class="left-h2">Columbia United Providers</div>
   <div class="right-h2">Camas, WA</div>
 </h2>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Manage DU Names with Modules"
-date:   2015-1-10 02:35:00
+date:   2015-5-15 02:35:00
 categories:
 - fsharp
 - domain-driven-design

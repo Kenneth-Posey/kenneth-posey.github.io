@@ -5,6 +5,7 @@ date:   2014-11-23 23:12:57
 categories:
 - csharp
 - programming
+published: false
 ---
 
 <p>This is a short post, but I invented a session value manager with some interesting properties for my work in ASP.NET. I had an issue with typos in keys for the session, plus it was a pain to keep up with key names manually, so I wanted to create a manager that could manage those values through static methods with some sort of enumerated value for the keys. <br><br></p>
