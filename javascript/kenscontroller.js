@@ -1,5 +1,7 @@
 
-var kensApp = angular.module('kensapp', [], function($interpolateProvider){
+var kensApp = angular.module('kensapp', []);
+
+kensApp.config(function($interpolateProvider){
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
