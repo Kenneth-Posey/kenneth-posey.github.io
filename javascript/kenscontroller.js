@@ -6,6 +6,6 @@ kensapp.config(function($interpolateProvider){
     $interpolateProvider.endSymbol(']]');
 });
 
-kensapp.controller('kenscontroller', function($scope){
-   $scope.testvalue = "hello angular";
+kensapp.controller('kenscontroller', function(){
+   this.testvalue = 'hello angular';
 });

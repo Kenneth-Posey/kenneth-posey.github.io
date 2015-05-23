@@ -3,11 +3,11 @@
 
   {% include head.html %}
 
-  <body class="exterior-wrapper" ng-app="kensapp" ng-controller="kenscontroller">
+  <body class="exterior-wrapper" ng-app="kensapp" ng-controller="kenscontroller as data">
 
       {% include header.html %}
       <div style="display:none">
-        [[ testvalue ]]
+        [[ data.testvalue ]]
       </div>
     <div class="interior-wrapper">
       {% include navigation.html %}
