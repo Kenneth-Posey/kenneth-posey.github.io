@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="kensapp">
 
   {% include head.html %}
 
-  <body class="exterior-wrapper">
+  <body class="exterior-wrapper" ng-controller="kenscontroller">
 
       {% include header.html %}
-
+      <div style="display:none">{{ testvalue }}</div>
     <div class="interior-wrapper">
       {% include navigation.html %}
       <div id="content">
