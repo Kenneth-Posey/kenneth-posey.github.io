@@ -7,7 +7,7 @@
 
       {% include header.html %}
       <div style="display:none">
-        // testvalue //
+        //testvalue//
       </div>
     <div class="interior-wrapper">
       {% include navigation.html %}
@@ -21,6 +21,21 @@
     {% include footer.html %}
     <div class="matrix-font stream-container" id="left-stream"></div>
     <div class="matrix-font stream-container" id="right-stream"></div>
+    <script type="text/javascript">
+
+      var kensapp = angular.module('kensapp', []);
+
+      kensapp.config(function($interpolateProvider){
+        $interpolateProvider.startSymbol('//');
+        $interpolateProvider.endSymbol('//');
+      });
+
+      kensapp.controller('kenscontroller', function(){
+        this.testvalue = 'hello angular';
+      });
+
+    </script>
+
     <script type="text/javascript">
 
     $(document).ready(function () {
